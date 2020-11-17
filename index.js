@@ -17,6 +17,13 @@ const STORE = [
 
 
 
+function generateItemElement(item, itemIndex, template){
+  return `
+    <li>${item.name}</li>
+  `;
+}
+
+
 function generateShoppingItemsString(shoppingList){
   console.log("Generating shopping list element");
 
