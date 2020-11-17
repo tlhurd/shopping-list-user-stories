@@ -25,20 +25,20 @@ function generateItemElement(item, itemIndex, template){
 
 
 function generateShoppingItemsString(shoppingList){
-  console.log("Generating shopping list element");
+  console.log('Generating shopping list element');
 
-  return `
-    <li>apples</li>
-    <li>oragnes</li>
-    <li>milk</li>
-    <li>bread</li>
-  `;
+  const items = shoppingList.map(function (item, index) {
+    return generateItemElement(item, index);
+  });
+
+  return items.join('');
 }
 
 function renderShoppingList() {
 // render the shopping list in the DOM
   console.log('`renderShoppingList` ran');
- 
+  const shoppingListItemsString = generateShoppingItemsString(STORE);
+
   // insert that HTML into the DOM
   $('.js-shopping-list').html(shoppingListItemsString);
 }
