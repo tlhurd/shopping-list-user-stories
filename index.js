@@ -49,7 +49,11 @@ function renderShoppingList() {
   // insert that HTML into the DOM
   $('.js-shopping-list').html(shoppingListItemsString);
 }
-  
+
+function addItemToShoppingList(itemName){
+  console.log(`Adding '${itemName}' to shopping list`);
+  STORE.push({id: cuid(), name: itemName, checked: false});
+}
   
 function handleNewItemSubmit() {
   // this function will be responsible for when users add a new shopping list item
@@ -58,6 +62,8 @@ function handleNewItemSubmit() {
     const newItemName = $('.js-shopping-list-entry').val();
     console.log(newItemName);
     $('.js-shopping-list-entry').val('');
+    addItemToShoppingList(newItemName);
+    renderShoppingList();
   });
 }
   
@@ -65,7 +71,10 @@ function handleNewItemSubmit() {
 function handleItemCheckClicked() {
   // this function will be responsible for when users click the "check" button on
   // a shopping list item.
-  console.log('`handleItemCheckClicked` ran');
+  $('.js-shopping-list').on('click', `.js-item-toggle`, event => {
+    console.log('`handleItemCheckClicked` ran');
+  });
+  
 }
   
   
