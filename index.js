@@ -66,13 +66,28 @@ function handleNewItemSubmit() {
     renderShoppingList();
   });
 }
+
+function toggleCheckedForListItem(itemId){
+  console.log('Toggling checked property for item with id' + itemId);
+  const item = STORE.find(item => item.id === itemId);
+  item.checked = !item.checked;
+}
   
-  
+function getItemIdFromElement(item) {
+  return $(item)
+    .closest('li')
+    .data('item-id');
+}
+
 function handleItemCheckClicked() {
   // this function will be responsible for when users click the "check" button on
   // a shopping list item.
   $('.js-shopping-list').on('click', `.js-item-toggle`, event => {
     console.log('`handleItemCheckClicked` ran');
+    const id = getItemIdFromElement
+    (event.currentTarget);
+    toggleCheckedForListItem(id);
+    renderShoppingList();
   });
   
 }
