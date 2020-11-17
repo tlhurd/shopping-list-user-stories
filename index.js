@@ -55,8 +55,10 @@ function handleNewItemSubmit() {
   // this function will be responsible for when users add a new shopping list item
   $('#js-shopping-list-form').submit(function (event){
     event.preventDefault();
+    const newItemName = $('.js-shopping-list-entry').val();
+    console.log(newItemName);
+    $('.js-shopping-list-entry').val('');
   });
-  console.log('`handleNewItemSubmit` ran');
 }
   
   
